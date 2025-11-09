@@ -3,17 +3,17 @@
 <plist version="1.0">
 <dict>
 	<key>API_KEY</key>
-	<string>AIzaSyBmNCmSeTymuU_3WWEd8De6Bjyq-qxFFzk</string>
+	<string>AIzaSyBgWedyvyRZB0BVAIrRr0i-rfQkNuPXsCU</string>
 	<key>GCM_SENDER_ID</key>
-	<string>681139015771</string>
+	<string>595518998171</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.mycompany.poll</string>
 	<key>PROJECT_ID</key>
-	<string>poll-mv6s8u</string>
+	<string>polling-app-a9109</string>
 	<key>STORAGE_BUCKET</key>
-	<string>poll-mv6s8u.firebasestorage.app</string>
+	<string>polling-app-a9109.firebasestorage.app</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -25,6 +25,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:681139015771:ios:a56c2c95ba9d1223d5ef7e</string>
+	<string>1:595518998171:ios:1bc73cd1fba7f7c341683e</string>
 </dict>
 </plist>

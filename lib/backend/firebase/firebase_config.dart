@@ -5,12 +5,12 @@ Future initFirebase() async {
   if (kIsWeb) {
     await Firebase.initializeApp(
         options: FirebaseOptions(
-            apiKey: "AIzaSyAdUgjzaKYP7gsC22OpWmgKHW4v_U8yKmE",
-            authDomain: "poll-mv6s8u.firebaseapp.com",
-            projectId: "poll-mv6s8u",
-            storageBucket: "poll-mv6s8u.firebasestorage.app",
-            messagingSenderId: "681139015771",
-            appId: "1:681139015771:web:9e91c2602a4e7de0d5ef7e"));
+            apiKey: "AIzaSyDlI7X-Ozv6nMbncCd6abzFtwrMHrpZ7ns",
+            authDomain: "polling-app-a9109.firebaseapp.com",
+            projectId: "polling-app-a9109",
+            storageBucket: "polling-app-a9109.firebasestorage.app",
+            messagingSenderId: "595518998171",
+            appId: "1:595518998171:web:5f6392b2904f758e41683e"));
   } else {
     await Firebase.initializeApp();
   }

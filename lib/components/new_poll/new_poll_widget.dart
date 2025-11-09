@@ -37,6 +37,15 @@ class _NewPollWidgetState extends State<NewPollWidget>
     _model.pollNameTextController ??= TextEditingController();
     _model.pollNameFocusNode ??= FocusNode();
 
+    _model.descriptionTextController ??= TextEditingController();
+    _model.descriptionFocusNode ??= FocusNode();
+
+    _model.candidate1TextController ??= TextEditingController();
+    _model.candidate1FocusNode ??= FocusNode();
+
+    _model.candidate2TextController ??= TextEditingController();
+    _model.candidate2FocusNode ??= FocusNode();
+
     animationsMap.addAll({
       'containerOnPageLoadAnimation': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
@@ -82,36 +91,36 @@ class _NewPollWidgetState extends State<NewPollWidget>
       decoration: BoxDecoration(
         color: Color(0x9AFFFFFF),
       ),
-      child: Column(
-        mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(16.0, 2.0, 16.0, 16.0),
-            child: Container(
-              width: double.infinity,
-              constraints: BoxConstraints(
-                maxWidth: 670.0,
-              ),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                boxShadow: [
-                  BoxShadow(
-                    blurRadius: 12.0,
-                    color: Color(0x1E000000),
-                    offset: Offset(
-                      0.0,
-                      5.0,
-                    ),
-                  )
-                ],
-                borderRadius: BorderRadius.circular(16.0),
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Column(
+      child: Align(
+        alignment: AlignmentDirectional(0.0, 0.0),
+        child: Padding(
+          padding: EdgeInsets.all(16.0),
+          child: Container(
+            width: double.infinity,
+            constraints: BoxConstraints(
+              maxWidth: 670.0,
+            ),
+            decoration: BoxDecoration(
+              color: FlutterFlowTheme.of(context).primaryBackground,
+              boxShadow: [
+                BoxShadow(
+                  blurRadius: 12.0,
+                  color: Color(0x1E000000),
+                  offset: Offset(
+                    0.0,
+                    5.0,
+                  ),
+                )
+              ],
+              borderRadius: BorderRadius.circular(16.0),
+            ),
+            child: Form(
+              key: _model.formKey,
+              autovalidateMode: AutovalidateMode.disabled,
+              child: Padding(
+                padding: EdgeInsets.all(16.0),
+                child: SingleChildScrollView(
+                  child: Column(
                     mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -129,7 +138,7 @@ class _NewPollWidgetState extends State<NewPollWidget>
                                       .headlineMedium
                                       .fontStyle,
                                 ),
-                                color: Color(0xFF15161E),
+                                color: FlutterFlowTheme.of(context).primaryText,
                                 fontSize: 24.0,
                                 letterSpacing: 0.0,
                                 fontWeight: FontWeight.w500,
@@ -237,32 +246,313 @@ class _NewPollWidgetState extends State<NewPollWidget>
                               .asValidator(context),
                         ),
                       ),
-                    ],
-                  ),
-                  Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(24.0, 12.0, 24.0, 24.0),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Align(
-                          alignment: AlignmentDirectional(0.0, 0.05),
-                          child: FFButtonWidget(
-                            onPressed: () async {
-                              Navigator.pop(context);
-                            },
-                            text: 'Cancel',
-                            options: FFButtonOptions(
-                              height: 44.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  24.0, 0.0, 24.0, 0.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 0.0),
-                              color: Colors.white,
-                              textStyle: FlutterFlowTheme.of(context)
-                                  .bodyMedium
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            16.0, 16.0, 16.0, 0.0),
+                        child: Container(
+                          width: double.infinity,
+                          child: TextFormField(
+                            controller: _model.descriptionTextController,
+                            focusNode: _model.descriptionFocusNode,
+                            autofocus: true,
+                            obscureText: false,
+                            decoration: InputDecoration(
+                              labelText: 'Description',
+                              labelStyle: FlutterFlowTheme.of(context)
+                                  .labelMedium
                                   .override(
+                                    font: GoogleFonts.plusJakartaSans(
+                                      fontWeight: FontWeight.w500,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .fontStyle,
+                                    ),
+                                    color: Color(0xFF606A85),
+                                    fontSize: 14.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.w500,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontStyle,
+                                  ),
+                              hintStyle: FlutterFlowTheme.of(context)
+                                  .labelMedium
+                                  .override(
+                                    font: GoogleFonts.plusJakartaSans(
+                                      fontWeight: FontWeight.w500,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .fontStyle,
+                                    ),
+                                    color: Color(0xFF606A85),
+                                    fontSize: 14.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.w500,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontStyle,
+                                  ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color(0xFFE5E7EB),
+                                  width: 2.0,
+                                ),
+                                borderRadius: BorderRadius.circular(12.0),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color(0xFF6F61EF),
+                                  width: 2.0,
+                                ),
+                                borderRadius: BorderRadius.circular(12.0),
+                              ),
+                              errorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color(0xFFFF5963),
+                                  width: 2.0,
+                                ),
+                                borderRadius: BorderRadius.circular(12.0),
+                              ),
+                              focusedErrorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color(0xFFFF5963),
+                                  width: 2.0,
+                                ),
+                                borderRadius: BorderRadius.circular(12.0),
+                              ),
+                              filled: true,
+                              fillColor: Colors.white,
+                              contentPadding: EdgeInsetsDirectional.fromSTEB(
+                                  20.0, 24.0, 20.0, 24.0),
+                            ),
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  font: GoogleFonts.plusJakartaSans(
+                                    fontWeight: FontWeight.w500,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
+                                  ),
+                                  color: Color(0xFF15161E),
+                                  fontSize: 14.0,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FontWeight.w500,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .fontStyle,
+                                ),
+                            cursorColor: Color(0xFF6F61EF),
+                            validator: _model.descriptionTextControllerValidator
+                                .asValidator(context),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            24.0, 16.0, 0.0, 0.0),
+                        child: Text(
+                          'Add Options',
+                          style: FlutterFlowTheme.of(context)
+                              .headlineMedium
+                              .override(
+                                font: GoogleFonts.outfit(
+                                  fontWeight: FontWeight.w500,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .headlineMedium
+                                      .fontStyle,
+                                ),
+                                color: FlutterFlowTheme.of(context).primaryText,
+                                fontSize: 24.0,
+                                letterSpacing: 0.0,
+                                fontWeight: FontWeight.w500,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .headlineMedium
+                                    .fontStyle,
+                              ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            16.0, 16.0, 16.0, 0.0),
+                        child: Container(
+                          width: double.infinity,
+                          child: TextFormField(
+                            controller: _model.candidate1TextController,
+                            focusNode: _model.candidate1FocusNode,
+                            autofocus: true,
+                            obscureText: false,
+                            decoration: InputDecoration(
+                              labelText: 'Option 1',
+                              labelStyle: FlutterFlowTheme.of(context)
+                                  .labelMedium
+                                  .override(
+                                    font: GoogleFonts.plusJakartaSans(
+                                      fontWeight: FontWeight.w500,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .fontStyle,
+                                    ),
+                                    color: Color(0xFF606A85),
+                                    fontSize: 14.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.w500,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontStyle,
+                                  ),
+                              hintStyle: FlutterFlowTheme.of(context)
+                                  .labelMedium
+                                  .override(
+                                    font: GoogleFonts.plusJakartaSans(
+                                      fontWeight: FontWeight.w500,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .fontStyle,
+                                    ),
+                                    color: Color(0xFF606A85),
+                                    fontSize: 14.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.w500,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontStyle,
+                                  ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color(0xFFE5E7EB),
+                                  width: 2.0,
+                                ),
+                                borderRadius: BorderRadius.circular(12.0),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color(0xFF6F61EF),
+                                  width: 2.0,
+                                ),
+                                borderRadius: BorderRadius.circular(12.0),
+                              ),
+                              errorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color(0xFFFF5963),
+                                  width: 2.0,
+                                ),
+                                borderRadius: BorderRadius.circular(12.0),
+                              ),
+                              focusedErrorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color(0xFFFF5963),
+                                  width: 2.0,
+                                ),
+                                borderRadius: BorderRadius.circular(12.0),
+                              ),
+                              filled: true,
+                              fillColor: Colors.white,
+                              contentPadding: EdgeInsetsDirectional.fromSTEB(
+                                  20.0, 24.0, 20.0, 24.0),
+                            ),
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  font: GoogleFonts.plusJakartaSans(
+                                    fontWeight: FontWeight.w500,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
+                                  ),
+                                  color: Color(0xFF15161E),
+                                  fontSize: 14.0,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FontWeight.w500,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .fontStyle,
+                                ),
+                            cursorColor: Color(0xFF6F61EF),
+                            validator: _model.candidate1TextControllerValidator
+                                .asValidator(context),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            16.0, 16.0, 16.0, 0.0),
+                        child: TextFormField(
+                          controller: _model.candidate2TextController,
+                          focusNode: _model.candidate2FocusNode,
+                          autofocus: true,
+                          obscureText: false,
+                          decoration: InputDecoration(
+                            labelText: 'Option 2',
+                            labelStyle: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .override(
+                                  font: GoogleFonts.plusJakartaSans(
+                                    fontWeight: FontWeight.w500,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontStyle,
+                                  ),
+                                  color: Color(0xFF606A85),
+                                  fontSize: 14.0,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FontWeight.w500,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .fontStyle,
+                                ),
+                            hintStyle: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .override(
+                                  font: GoogleFonts.plusJakartaSans(
+                                    fontWeight: FontWeight.w500,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontStyle,
+                                  ),
+                                  color: Color(0xFF606A85),
+                                  fontSize: 14.0,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FontWeight.w500,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .fontStyle,
+                                ),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0xFFE5E7EB),
+                                width: 2.0,
+                              ),
+                              borderRadius: BorderRadius.circular(12.0),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0xFF6F61EF),
+                                width: 2.0,
+                              ),
+                              borderRadius: BorderRadius.circular(12.0),
+                            ),
+                            errorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0xFFFF5963),
+                                width: 2.0,
+                              ),
+                              borderRadius: BorderRadius.circular(12.0),
+                            ),
+                            focusedErrorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Color(0xFFFF5963),
+                                width: 2.0,
+                              ),
+                              borderRadius: BorderRadius.circular(12.0),
+                            ),
+                            filled: true,
+                            fillColor: Colors.white,
+                            contentPadding: EdgeInsetsDirectional.fromSTEB(
+                                20.0, 24.0, 20.0, 24.0),
+                          ),
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
                                     font: GoogleFonts.plusJakartaSans(
                                       fontWeight: FontWeight.w500,
                                       fontStyle: FlutterFlowTheme.of(context)
@@ -277,85 +567,174 @@ class _NewPollWidgetState extends State<NewPollWidget>
                                         .bodyMedium
                                         .fontStyle,
                                   ),
-                              elevation: 0.0,
-                              borderSide: BorderSide(
-                                color: Color(0xFFE5E7EB),
-                                width: 2.0,
-                              ),
-                              borderRadius: BorderRadius.circular(12.0),
-                              hoverColor: Color(0xFFE5E7EB),
-                              hoverBorderSide: BorderSide(
-                                color: Color(0xFFE5E7EB),
-                                width: 2.0,
-                              ),
-                              hoverTextColor: Color(0xFF15161E),
-                              hoverElevation: 3.0,
-                            ),
-                          ),
+                          cursorColor: Color(0xFF6F61EF),
+                          validator: _model.candidate2TextControllerValidator
+                              .asValidator(context),
                         ),
-                        Align(
-                          alignment: AlignmentDirectional(0.0, 0.05),
-                          child: FFButtonWidget(
-                            onPressed: () async {
-                              await PollRecord.collection
-                                  .doc()
-                                  .set(createPollRecordData(
-                                    pollName:
-                                        _model.pollNameTextController.text,
-                                    isDone: false,
-                                    user: currentUserReference,
-                                  ));
-                              Navigator.pop(context);
-                            },
-                            text: 'Create Poll',
-                            options: FFButtonOptions(
-                              height: 44.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  24.0, 0.0, 24.0, 0.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 0.0),
-                              color: Color(0xFF6F61EF),
-                              textStyle: FlutterFlowTheme.of(context)
-                                  .titleSmall
-                                  .override(
-                                    font: GoogleFonts.plusJakartaSans(
-                                      fontWeight: FontWeight.w500,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .fontStyle,
-                                    ),
-                                    color: Colors.white,
-                                    fontSize: 16.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w500,
-                                    fontStyle: FlutterFlowTheme.of(context)
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            24.0, 12.0, 24.0, 24.0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Align(
+                              alignment: AlignmentDirectional(0.0, 0.05),
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 5.0),
+                                child: FFButtonWidget(
+                                  onPressed: () async {
+                                    Navigator.pop(context);
+                                  },
+                                  text: 'Cancel',
+                                  options: FFButtonOptions(
+                                    height: 44.0,
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        24.0, 0.0, 24.0, 0.0),
+                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 0.0),
+                                    color: FlutterFlowTheme.of(context).error,
+                                    textStyle: FlutterFlowTheme.of(context)
                                         .titleSmall
-                                        .fontStyle,
+                                        .override(
+                                          font: GoogleFonts.plusJakartaSans(
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmall
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmall
+                                                    .fontStyle,
+                                          ),
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                          letterSpacing: 0.0,
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleSmall
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleSmall
+                                                  .fontStyle,
+                                        ),
+                                    elevation: 0.0,
+                                    borderSide: BorderSide(
+                                      color: FlutterFlowTheme.of(context)
+                                          .alternate,
+                                      width: 2.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(12.0),
+                                    hoverColor: Color(0xFFE5E7EB),
+                                    hoverBorderSide: BorderSide(
+                                      color: Color(0xFFE5E7EB),
+                                      width: 2.0,
+                                    ),
+                                    hoverTextColor: Color(0xFF15161E),
+                                    hoverElevation: 3.0,
                                   ),
-                              elevation: 3.0,
-                              borderSide: BorderSide(
-                                color: Colors.transparent,
-                                width: 1.0,
+                                ),
                               ),
-                              borderRadius: BorderRadius.circular(12.0),
-                              hoverColor: Color(0x4D9489F5),
-                              hoverBorderSide: BorderSide(
-                                color: Color(0xFF6F61EF),
-                                width: 1.0,
-                              ),
-                              hoverTextColor: Color(0xFF15161E),
-                              hoverElevation: 0.0,
                             ),
-                          ),
+                            Align(
+                              alignment: AlignmentDirectional(0.0, 0.05),
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 5.0),
+                                child: InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onDoubleTap: () async {
+                                    await Future.wait([]);
+                                  },
+                                  child: FFButtonWidget(
+                                    onPressed: () async {
+                                      if (_model.formKey.currentState == null ||
+                                          !_model.formKey.currentState!
+                                              .validate()) {
+                                        return;
+                                      }
+
+                                      await PollRecord.createDoc(
+                                              currentUserReference!)
+                                          .set(createPollRecordData(
+                                        pollName:
+                                            _model.pollNameTextController.text,
+                                        option1: _model
+                                            .candidate1TextController.text,
+                                        option2: _model
+                                            .candidate2TextController.text,
+                                        dateCreated: getCurrentTimestamp,
+                                        owner: currentUserReference,
+                                        description: _model
+                                            .descriptionTextController.text,
+                                        isDone: false,
+                                      ));
+                                      Navigator.pop(context);
+                                    },
+                                    text: 'Create Poll',
+                                    options: FFButtonOptions(
+                                      height: 44.0,
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          24.0, 0.0, 24.0, 0.0),
+                                      iconPadding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              0.0, 0.0, 0.0, 0.0),
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .override(
+                                            font: GoogleFonts.plusJakartaSans(
+                                              fontWeight: FontWeight.w600,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmall
+                                                      .fontStyle,
+                                            ),
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            fontSize: 16.0,
+                                            letterSpacing: 0.0,
+                                            fontWeight: FontWeight.w600,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmall
+                                                    .fontStyle,
+                                          ),
+                                      elevation: 3.0,
+                                      borderSide: BorderSide(
+                                        color: Colors.transparent,
+                                        width: 1.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(12.0),
+                                      hoverColor: Color(0x4D9489F5),
+                                      hoverBorderSide: BorderSide(
+                                        color: Color(0xFF6F61EF),
+                                        width: 1.0,
+                                      ),
+                                      hoverTextColor: Color(0xFF15161E),
+                                      hoverElevation: 0.0,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                ],
+                ),
               ),
-            ).animateOnPageLoad(animationsMap['containerOnPageLoadAnimation']!),
-          ),
-        ],
+            ),
+          ).animateOnPageLoad(animationsMap['containerOnPageLoadAnimation']!),
+        ),
       ),
     );
   }

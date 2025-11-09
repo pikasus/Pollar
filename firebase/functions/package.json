@@ -23,10 +23,10 @@
   },
   "scripts": {
     "lint": "./node_modules/.bin/eslint --max-warnings=0 .",
-    "serve": "firebase -P poll-mv6s8u emulators:start --only functions",
-    "shell": "firebase -P poll-mv6s8u functions:shell",
+    "serve": "firebase -P polling-app-a9109 emulators:start --only functions",
+    "shell": "firebase -P polling-app-a9109 functions:shell",
     "start": "npm run shell",
-    "logs": "firebase -P poll-mv6s8u functions:log",
+    "logs": "firebase -P polling-app-a9109 functions:log",
     "compile": "cp ../../tsconfig.template.json ./tsconfig-compile.json && tsc --project tsconfig-compile.json"
   },
   "engines": {

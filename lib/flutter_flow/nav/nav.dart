@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '/backend/backend.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
@@ -78,31 +77,28 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       refreshListenable: appStateNotifier,
       navigatorKey: appNavigatorKey,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? NavBarPage() : StartPageWidget(),
+          appStateNotifier.loggedIn ? NavBarPage() : OnBoardingWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? NavBarPage() : StartPageWidget(),
+              appStateNotifier.loggedIn ? NavBarPage() : OnBoardingWidget(),
         ),
         FFRoute(
-          name: MainPageWidget.routeName,
-          path: MainPageWidget.routePath,
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'mainPage')
-              : MainPageWidget(
-                  pollName: params.getParam(
-                    'pollName',
-                    ParamType.String,
-                  ),
-                ),
-        ),
-        FFRoute(
-          name: StartPageWidget.routeName,
-          path: StartPageWidget.routePath,
-          builder: (context, params) => StartPageWidget(),
-        ),
+            name: MainPageWidget.routeName,
+            path: MainPageWidget.routePath,
+            builder: (context, params) => params.isEmpty
+                ? NavBarPage(initialPage: 'mainPage')
+                : NavBarPage(
+                    initialPage: 'mainPage',
+                    page: MainPageWidget(
+                      pollName: params.getParam(
+                        'pollName',
+                        ParamType.String,
+                      ),
+                    ),
+                  )),
         FFRoute(
           name: ProfilePageWidget.routeName,
           path: ProfilePageWidget.routePath,
@@ -111,17 +107,19 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               : ProfilePageWidget(),
         ),
         FFRoute(
-          name: ViewPageWidget.routeName,
-          path: ViewPageWidget.routePath,
-          asyncParams: {
-            'pollName': getDoc(['poll'], PollRecord.fromSnapshot),
-          },
-          builder: (context, params) => ViewPageWidget(
-            pollName: params.getParam(
-              'pollName',
-              ParamType.Document,
-            ),
-          ),
+          name: OnBoardingWidget.routeName,
+          path: OnBoardingWidget.routePath,
+          builder: (context, params) => OnBoardingWidget(),
+        ),
+        FFRoute(
+          name: SignInWidget.routeName,
+          path: SignInWidget.routePath,
+          builder: (context, params) => SignInWidget(),
+        ),
+        FFRoute(
+          name: SignUpWidget.routeName,
+          path: SignUpWidget.routePath,
+          builder: (context, params) => SignUpWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -292,7 +290,7 @@ class FFRoute {
 
           if (requireAuth && !appStateNotifier.loggedIn) {
             appStateNotifier.setRedirectLocationIfUnset(state.uri.toString());
-            return '/startPage';
+            return '/onBoarding';
           }
           return null;
         },

@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "681139015771",
-    "project_id": "poll-mv6s8u",
-    "storage_bucket": "poll-mv6s8u.firebasestorage.app"
+    "project_number": "595518998171",
+    "project_id": "polling-app-a9109",
+    "storage_bucket": "polling-app-a9109.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:681139015771:android:12618e7389f5d978d5ef7e",
+        "mobilesdk_app_id": "1:595518998171:android:019ab2c91eb4e9c241683e",
         "android_client_info": {
           "package_name": "com.mycompany.poll"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyB6NhpOZLLFcIIEC01iyc1eTyE70wjxa8c"
+          "current_key": "AIzaSyCa-YrN9-Tgy1XdnavzuvG32HKY55Oi5XU"
         }
       ],
       "services": {

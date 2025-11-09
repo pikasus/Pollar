@@ -1,8 +1,9 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'view_page_widget.dart' show ViewPageWidget;
+import '/index.dart';
+import 'on_boarding_widget.dart' show OnBoardingWidget;
 import 'package:flutter/material.dart';
 
-class ViewPageModel extends FlutterFlowModel<ViewPageWidget> {
+class OnBoardingModel extends FlutterFlowModel<OnBoardingWidget> {
   @override
   void initState(BuildContext context) {}
 

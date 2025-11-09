@@ -164,6 +164,10 @@ class _NavBarPageState extends State<NavBarPage> {
               Icons.home_outlined,
               size: 24.0,
             ),
+            activeIcon: Icon(
+              Icons.home,
+              size: 24.0,
+            ),
             label: 'Home',
             tooltip: '',
           ),
