@@ -96,6 +96,26 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget>
       'textOnPageLoadAnimation2': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
         effectsBuilder: () => [
+          VisibilityEffect(duration: 350.ms),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 350.0.ms,
+            duration: 400.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 350.0.ms,
+            duration: 400.0.ms,
+            begin: Offset(0.0, 30.0),
+            end: Offset(0.0, 0.0),
+          ),
+        ],
+      ),
+      'textOnPageLoadAnimation3': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
           VisibilityEffect(duration: 400.ms),
           FadeEffect(
             curve: Curves.easeInOut,
@@ -197,14 +217,21 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget>
                         decoration: BoxDecoration(
                           color: FlutterFlowTheme.of(context).alternate,
                           shape: BoxShape.circle,
+                          border: Border.all(
+                            color:
+                                FlutterFlowTheme.of(context).primaryBackground,
+                          ),
                         ),
-                        child: Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: Image.network(
-                            'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/f-f-templates-q1-23-fbcr63/assets/ax4fvwjz7awx/@4xff_badgeDesign_dark_small.png',
-                            width: 200.0,
-                            height: 200.0,
-                            fit: BoxFit.cover,
+                        child: Align(
+                          alignment: AlignmentDirectional(0.0, 1.0),
+                          child: Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: Image.asset(
+                              'assets/images/47f148df-34de-4d8a-b9f0-a5a975f73745.png',
+                              width: 200.0,
+                              height: 200.0,
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         ),
                       ).animateOnPageLoad(
@@ -213,7 +240,7 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget>
                         padding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 44.0, 0.0, 0.0),
                         child: Text(
-                          'Welcome!',
+                          'Welcome to Pollar!',
                           style: FlutterFlowTheme.of(context)
                               .displaySmall
                               .override(
@@ -236,6 +263,25 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget>
                         ).animateOnPageLoad(
                             animationsMap['textOnPageLoadAnimation1']!),
                       ),
+                      Text(
+                        'The Polling App',
+                        style:
+                            FlutterFlowTheme.of(context).displaySmall.override(
+                                  font: GoogleFonts.outfit(
+                                    fontWeight: FontWeight.w600,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .displaySmall
+                                        .fontStyle,
+                                  ),
+                                  fontSize: 28.0,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FontWeight.w600,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .displaySmall
+                                      .fontStyle,
+                                ),
+                      ).animateOnPageLoad(
+                          animationsMap['textOnPageLoadAnimation2']!),
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(
                             44.0, 8.0, 44.0, 0.0),
@@ -263,7 +309,7 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget>
                                     .fontStyle,
                               ),
                         ).animateOnPageLoad(
-                            animationsMap['textOnPageLoadAnimation2']!),
+                            animationsMap['textOnPageLoadAnimation3']!),
                       ),
                     ],
                   ),

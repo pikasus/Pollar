@@ -59,13 +59,13 @@ class _MyAppState extends State<MyApp> {
 
     _appStateNotifier = AppStateNotifier.instance;
     _router = createRouter(_appStateNotifier);
-    userStream = pollFirebaseUserStream()
+    userStream = pollarFirebaseUserStream()
       ..listen((user) {
         _appStateNotifier.update(user);
       });
     jwtTokenStream.listen((_) {});
     Future.delayed(
-      Duration(milliseconds: 1000),
+      Duration(milliseconds: 500),
       () => _appStateNotifier.stopShowingSplashImage(),
     );
   }
@@ -86,7 +86,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
-      title: 'Poll',
+      title: 'Pollar',
       localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
@@ -177,7 +177,7 @@ class _NavBarPageState extends State<NavBarPage> {
               size: 24.0,
             ),
             activeIcon: Icon(
-              Icons.account_circle_sharp,
+              Icons.account_circle,
               size: 24.0,
             ),
             label: 'Profile',

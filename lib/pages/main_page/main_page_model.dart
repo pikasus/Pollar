@@ -4,6 +4,10 @@ import 'main_page_widget.dart' show MainPageWidget;
 import 'package:flutter/material.dart';
 
 class MainPageModel extends FlutterFlowModel<MainPageWidget> {
+  ///  Local state fields for this page.
+
+  PollRecord? pollArea;
+
   ///  State fields for stateful widgets in this page.
 
   // State field(s) for TabBar widget.

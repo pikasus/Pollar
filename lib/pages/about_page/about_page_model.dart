@@ -1,8 +1,8 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'about_widget.dart' show AboutWidget;
+import 'about_page_widget.dart' show AboutPageWidget;
 import 'package:flutter/material.dart';
 
-class AboutModel extends FlutterFlowModel<AboutWidget> {
+class AboutPageModel extends FlutterFlowModel<AboutPageWidget> {
   @override
   void initState(BuildContext context) {}
 

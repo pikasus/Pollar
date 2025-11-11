@@ -6,7 +6,6 @@ import 'package:provider/provider.dart';
 import '/auth/base_auth_user_provider.dart';
 
 import '/main.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
 import '/index.dart';
@@ -120,6 +119,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: SignUpWidget.routeName,
           path: SignUpWidget.routePath,
           builder: (context, params) => SignUpWidget(),
+        ),
+        FFRoute(
+          name: AboutPageWidget.routeName,
+          path: AboutPageWidget.routePath,
+          builder: (context, params) => AboutPageWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -304,14 +308,14 @@ class FFRoute {
                 )
               : builder(context, ffParams);
           final child = appStateNotifier.loading
-              ? Center(
-                  child: SizedBox(
-                    width: 50.0,
-                    height: 50.0,
-                    child: CircularProgressIndicator(
-                      valueColor: AlwaysStoppedAnimation<Color>(
-                        FlutterFlowTheme.of(context).primary,
-                      ),
+              ? Container(
+                  color: Colors.transparent,
+                  child: Center(
+                    child: Image.asset(
+                      'assets/images/47f148df-34de-4d8a-b9f0-a5a975f73745.png',
+                      width: 200.0,
+                      height: double.infinity,
+                      fit: BoxFit.contain,
                     ),
                   ),
                 )

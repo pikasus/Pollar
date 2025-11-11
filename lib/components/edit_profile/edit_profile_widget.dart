@@ -1,11 +1,9 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/backend/firebase_storage/storage.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/upload_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -53,27 +51,41 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
           VisibilityEffect(duration: 300.ms),
           MoveEffect(
             curve: Curves.bounceOut,
-            delay: 300.0.ms,
-            duration: 400.0.ms,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
             begin: Offset(0.0, 100.0),
             end: Offset(0.0, 0.0),
           ),
           FadeEffect(
             curve: Curves.easeInOut,
-            delay: 300.0.ms,
-            duration: 400.0.ms,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+      'formOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          VisibilityEffect(duration: 1.ms),
+          MoveEffect(
+            curve: Curves.bounceOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: Offset(0.0, 100.0),
+            end: Offset(0.0, 0.0),
+          ),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
             begin: 0.0,
             end: 1.0,
           ),
         ],
       ),
     });
-    setupAnimations(
-      animationsMap.values.where((anim) =>
-          anim.trigger == AnimationTrigger.onActionTrigger ||
-          !anim.applyInitialState),
-      this,
-    );
   }
 
   @override
@@ -146,143 +158,6 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                     .headlineMedium
                                     .fontStyle,
                               ),
-                        ),
-                      ),
-                      Align(
-                        alignment: AlignmentDirectional(0.0, 0.0),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 10.0, 0.0, 0.0),
-                          child: Container(
-                            width: 200.0,
-                            height: 200.0,
-                            decoration: BoxDecoration(
-                              color: Color(0xFFE0E3E7),
-                              borderRadius: BorderRadius.circular(12.0),
-                            ),
-                            child: Align(
-                              alignment: AlignmentDirectional(-1.0, 0.0),
-                              child: Padding(
-                                padding: EdgeInsets.all(2.0),
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(10.0),
-                                  child: Image.network(
-                                    _model.uploadedFileUrl_uploadDataI3q,
-                                    width: 200.0,
-                                    height: 200.0,
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Align(
-                        alignment: AlignmentDirectional(0.0, 0.05),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 10.0, 0.0, 0.0),
-                          child: FFButtonWidget(
-                            onPressed: () async {
-                              final selectedMedia =
-                                  await selectMediaWithSourceBottomSheet(
-                                context: context,
-                                maxWidth: 500.00,
-                                maxHeight: 500.00,
-                                imageQuality: 70,
-                                allowPhoto: true,
-                              );
-                              if (selectedMedia != null &&
-                                  selectedMedia.every((m) => validateFileFormat(
-                                      m.storagePath, context))) {
-                                safeSetState(() => _model
-                                    .isDataUploading_uploadDataI3q = true);
-                                var selectedUploadedFiles = <FFUploadedFile>[];
-
-                                var downloadUrls = <String>[];
-                                try {
-                                  selectedUploadedFiles = selectedMedia
-                                      .map((m) => FFUploadedFile(
-                                            name: m.storagePath.split('/').last,
-                                            bytes: m.bytes,
-                                            height: m.dimensions?.height,
-                                            width: m.dimensions?.width,
-                                            blurHash: m.blurHash,
-                                            originalFilename:
-                                                m.originalFilename,
-                                          ))
-                                      .toList();
-
-                                  downloadUrls = (await Future.wait(
-                                    selectedMedia.map(
-                                      (m) async => await uploadData(
-                                          m.storagePath, m.bytes),
-                                    ),
-                                  ))
-                                      .where((u) => u != null)
-                                      .map((u) => u!)
-                                      .toList();
-                                } finally {
-                                  _model.isDataUploading_uploadDataI3q = false;
-                                }
-                                if (selectedUploadedFiles.length ==
-                                        selectedMedia.length &&
-                                    downloadUrls.length ==
-                                        selectedMedia.length) {
-                                  safeSetState(() {
-                                    _model.uploadedLocalFile_uploadDataI3q =
-                                        selectedUploadedFiles.first;
-                                    _model.uploadedFileUrl_uploadDataI3q =
-                                        downloadUrls.first;
-                                  });
-                                } else {
-                                  safeSetState(() {});
-                                  return;
-                                }
-                              }
-                            },
-                            text: 'Upload Photo',
-                            options: FFButtonOptions(
-                              height: 44.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  24.0, 0.0, 24.0, 0.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 0.0),
-                              color: FlutterFlowTheme.of(context).primary,
-                              textStyle: FlutterFlowTheme.of(context)
-                                  .titleSmall
-                                  .override(
-                                    font: GoogleFonts.plusJakartaSans(
-                                      fontWeight: FontWeight.w500,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .fontStyle,
-                                    ),
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    fontSize: 16.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w500,
-                                    fontStyle: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .fontStyle,
-                                  ),
-                              elevation: 3.0,
-                              borderSide: BorderSide(
-                                color: Colors.transparent,
-                                width: 1.0,
-                              ),
-                              borderRadius: BorderRadius.circular(12.0),
-                              hoverColor: Color(0x4D9489F5),
-                              hoverBorderSide: BorderSide(
-                                color: Color(0xFF6F61EF),
-                                width: 1.0,
-                              ),
-                              hoverTextColor: Color(0xFF15161E),
-                              hoverElevation: 0.0,
-                            ),
-                          ),
                         ),
                       ),
                       Padding(
@@ -657,8 +532,10 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                               alignment: AlignmentDirectional(0.0, 0.05),
                               child: FFButtonWidget(
                                 onPressed: () async {
-                                  if (_model.formKey.currentState != null) {
-                                    _model.formKey.currentState!.validate();
+                                  if (_model.formKey.currentState == null ||
+                                      !_model.formKey.currentState!
+                                          .validate()) {
+                                    return;
                                   }
 
                                   await currentUserReference!
@@ -720,7 +597,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                   ),
                 ),
               ),
-            ),
+            ).animateOnPageLoad(animationsMap['formOnPageLoadAnimation']!),
           ).animateOnPageLoad(animationsMap['containerOnPageLoadAnimation']!),
         ),
       ),

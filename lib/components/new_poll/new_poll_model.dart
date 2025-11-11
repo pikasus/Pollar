@@ -57,12 +57,54 @@ class NewPollModel extends FlutterFlowModel<NewPollWidget> {
     return null;
   }
 
+  // State field(s) for Candidate3 widget.
+  FocusNode? candidate3FocusNode;
+  TextEditingController? candidate3TextController;
+  String? Function(BuildContext, String?)? candidate3TextControllerValidator;
+  String? _candidate3TextControllerValidator(
+      BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Option 3 is required';
+    }
+
+    return null;
+  }
+
+  // State field(s) for Candidate4 widget.
+  FocusNode? candidate4FocusNode;
+  TextEditingController? candidate4TextController;
+  String? Function(BuildContext, String?)? candidate4TextControllerValidator;
+  String? _candidate4TextControllerValidator(
+      BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Option 4 is required';
+    }
+
+    return null;
+  }
+
+  // State field(s) for Candidate5 widget.
+  FocusNode? candidate5FocusNode;
+  TextEditingController? candidate5TextController;
+  String? Function(BuildContext, String?)? candidate5TextControllerValidator;
+  String? _candidate5TextControllerValidator(
+      BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Option 5 is required';
+    }
+
+    return null;
+  }
+
   @override
   void initState(BuildContext context) {
     pollNameTextControllerValidator = _pollNameTextControllerValidator;
     descriptionTextControllerValidator = _descriptionTextControllerValidator;
     candidate1TextControllerValidator = _candidate1TextControllerValidator;
     candidate2TextControllerValidator = _candidate2TextControllerValidator;
+    candidate3TextControllerValidator = _candidate3TextControllerValidator;
+    candidate4TextControllerValidator = _candidate4TextControllerValidator;
+    candidate5TextControllerValidator = _candidate5TextControllerValidator;
   }
 
   @override
@@ -78,5 +120,14 @@ class NewPollModel extends FlutterFlowModel<NewPollWidget> {
 
     candidate2FocusNode?.dispose();
     candidate2TextController?.dispose();
+
+    candidate3FocusNode?.dispose();
+    candidate3TextController?.dispose();
+
+    candidate4FocusNode?.dispose();
+    candidate4TextController?.dispose();
+
+    candidate5FocusNode?.dispose();
+    candidate5TextController?.dispose();
   }
 }

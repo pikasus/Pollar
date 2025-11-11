@@ -66,6 +66,36 @@ class PollRecord extends FirestoreRecord {
   bool get isDone => _isDone ?? false;
   bool hasIsDone() => _isDone != null;
 
+  // "option3" field.
+  String? _option3;
+  String get option3 => _option3 ?? '';
+  bool hasOption3() => _option3 != null;
+
+  // "option4" field.
+  String? _option4;
+  String get option4 => _option4 ?? '';
+  bool hasOption4() => _option4 != null;
+
+  // "option5" field.
+  String? _option5;
+  String get option5 => _option5 ?? '';
+  bool hasOption5() => _option5 != null;
+
+  // "optionList3" field.
+  List<DocumentReference>? _optionList3;
+  List<DocumentReference> get optionList3 => _optionList3 ?? const [];
+  bool hasOptionList3() => _optionList3 != null;
+
+  // "optionList4" field.
+  List<DocumentReference>? _optionList4;
+  List<DocumentReference> get optionList4 => _optionList4 ?? const [];
+  bool hasOptionList4() => _optionList4 != null;
+
+  // "optionList5" field.
+  List<DocumentReference>? _optionList5;
+  List<DocumentReference> get optionList5 => _optionList5 ?? const [];
+  bool hasOptionList5() => _optionList5 != null;
+
   DocumentReference get parentReference => reference.parent.parent!;
 
   void _initializeFields() {
@@ -79,6 +109,12 @@ class PollRecord extends FirestoreRecord {
     _description = snapshotData['description'] as String?;
     _chosen = getDataList(snapshotData['chosen']);
     _isDone = snapshotData['isDone'] as bool?;
+    _option3 = snapshotData['option3'] as String?;
+    _option4 = snapshotData['option4'] as String?;
+    _option5 = snapshotData['option5'] as String?;
+    _optionList3 = getDataList(snapshotData['optionList3']);
+    _optionList4 = getDataList(snapshotData['optionList4']);
+    _optionList5 = getDataList(snapshotData['optionList5']);
   }
 
   static Query<Map<String, dynamic>> collection([DocumentReference? parent]) =>
@@ -127,6 +163,9 @@ Map<String, dynamic> createPollRecordData({
   DocumentReference? owner,
   String? description,
   bool? isDone,
+  String? option3,
+  String? option4,
+  String? option5,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -137,6 +176,9 @@ Map<String, dynamic> createPollRecordData({
       'owner': owner,
       'description': description,
       'isDone': isDone,
+      'option3': option3,
+      'option4': option4,
+      'option5': option5,
     }.withoutNulls,
   );
 
@@ -158,7 +200,13 @@ class PollRecordDocumentEquality implements Equality<PollRecord> {
         e1?.owner == e2?.owner &&
         e1?.description == e2?.description &&
         listEquality.equals(e1?.chosen, e2?.chosen) &&
-        e1?.isDone == e2?.isDone;
+        e1?.isDone == e2?.isDone &&
+        e1?.option3 == e2?.option3 &&
+        e1?.option4 == e2?.option4 &&
+        e1?.option5 == e2?.option5 &&
+        listEquality.equals(e1?.optionList3, e2?.optionList3) &&
+        listEquality.equals(e1?.optionList4, e2?.optionList4) &&
+        listEquality.equals(e1?.optionList5, e2?.optionList5);
   }
 
   @override
@@ -172,7 +220,13 @@ class PollRecordDocumentEquality implements Equality<PollRecord> {
         e?.owner,
         e?.description,
         e?.chosen,
-        e?.isDone
+        e?.isDone,
+        e?.option3,
+        e?.option4,
+        e?.option5,
+        e?.optionList3,
+        e?.optionList4,
+        e?.optionList5
       ]);
 
   @override
