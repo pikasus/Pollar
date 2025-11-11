@@ -360,6 +360,9 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                       ));
                                                       ScaffoldMessenger.of(
                                                               context)
+                                                          .clearSnackBars();
+                                                      ScaffoldMessenger.of(
+                                                              context)
                                                           .showSnackBar(
                                                         SnackBar(
                                                           content: Text(
@@ -2255,6 +2258,9 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                                         .delete();
                                                                     ScaffoldMessenger.of(
                                                                             context)
+                                                                        .clearSnackBars();
+                                                                    ScaffoldMessenger.of(
+                                                                            context)
                                                                         .showSnackBar(
                                                                       SnackBar(
                                                                         content:
@@ -2267,7 +2273,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                                           ),
                                                                         ),
                                                                         duration:
-                                                                            Duration(milliseconds: 2000),
+                                                                            Duration(milliseconds: 1000),
                                                                         backgroundColor:
                                                                             FlutterFlowTheme.of(context).primaryBackground,
                                                                       ),

@@ -6,48 +6,21 @@ class EditProfileModel extends FlutterFlowModel<EditProfileWidget> {
   ///  State fields for stateful widgets in this component.
 
   final formKey = GlobalKey<FormState>();
-  // State field(s) for Name widget.
+  // State field(s) for name widget.
   FocusNode? nameFocusNode;
   TextEditingController? nameTextController;
   String? Function(BuildContext, String?)? nameTextControllerValidator;
-  String? _nameTextControllerValidator(BuildContext context, String? val) {
-    if (val == null || val.isEmpty) {
-      return 'Poll Name is required';
-    }
-
-    return null;
-  }
-
   // State field(s) for email widget.
   FocusNode? emailFocusNode;
   TextEditingController? emailTextController;
   String? Function(BuildContext, String?)? emailTextControllerValidator;
-  String? _emailTextControllerValidator(BuildContext context, String? val) {
-    if (val == null || val.isEmpty) {
-      return 'Email is required';
-    }
-
-    return null;
-  }
-
-  // State field(s) for myBio widget.
-  FocusNode? myBioFocusNode;
-  TextEditingController? myBioTextController;
-  String? Function(BuildContext, String?)? myBioTextControllerValidator;
-  String? _myBioTextControllerValidator(BuildContext context, String? val) {
-    if (val == null || val.isEmpty) {
-      return 'Bio is required';
-    }
-
-    return null;
-  }
+  // State field(s) for bio widget.
+  FocusNode? bioFocusNode;
+  TextEditingController? bioTextController;
+  String? Function(BuildContext, String?)? bioTextControllerValidator;
 
   @override
-  void initState(BuildContext context) {
-    nameTextControllerValidator = _nameTextControllerValidator;
-    emailTextControllerValidator = _emailTextControllerValidator;
-    myBioTextControllerValidator = _myBioTextControllerValidator;
-  }
+  void initState(BuildContext context) {}
 
   @override
   void dispose() {
@@ -57,7 +30,7 @@ class EditProfileModel extends FlutterFlowModel<EditProfileWidget> {
     emailFocusNode?.dispose();
     emailTextController?.dispose();
 
-    myBioFocusNode?.dispose();
-    myBioTextController?.dispose();
+    bioFocusNode?.dispose();
+    bioTextController?.dispose();
   }
 }
