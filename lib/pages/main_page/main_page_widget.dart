@@ -1244,6 +1244,11 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                               await ongoingPollRecord
                                                                   .reference
                                                                   .update({
+                                                                ...createPollRecordData(
+                                                                  chosenOption:
+                                                                      ongoingPollRecord
+                                                                          .option1,
+                                                                ),
                                                                 ...mapToFirestore(
                                                                   {
                                                                     'optionList1':
@@ -1337,6 +1342,11 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                               await ongoingPollRecord
                                                                   .reference
                                                                   .update({
+                                                                ...createPollRecordData(
+                                                                  option2:
+                                                                      ongoingPollRecord
+                                                                          .option2,
+                                                                ),
                                                                 ...mapToFirestore(
                                                                   {
                                                                     'optionList2':
@@ -1430,6 +1440,11 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                               await ongoingPollRecord
                                                                   .reference
                                                                   .update({
+                                                                ...createPollRecordData(
+                                                                  chosenOption:
+                                                                      ongoingPollRecord
+                                                                          .option3,
+                                                                ),
                                                                 ...mapToFirestore(
                                                                   {
                                                                     'chosen':
@@ -1523,6 +1538,11 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                               await ongoingPollRecord
                                                                   .reference
                                                                   .update({
+                                                                ...createPollRecordData(
+                                                                  option4:
+                                                                      ongoingPollRecord
+                                                                          .option4,
+                                                                ),
                                                                 ...mapToFirestore(
                                                                   {
                                                                     'chosen':
@@ -1607,6 +1627,11 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                             await ongoingPollRecord
                                                                 .reference
                                                                 .update({
+                                                              ...createPollRecordData(
+                                                                chosenOption:
+                                                                    ongoingPollRecord
+                                                                        .option5,
+                                                              ),
                                                               ...mapToFirestore(
                                                                 {
                                                                   'chosen':
@@ -2118,6 +2143,81 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                         mainAxisSize:
                                                             MainAxisSize.max,
                                                         children: [
+                                                          Expanded(
+                                                            child: Align(
+                                                              alignment:
+                                                                  AlignmentDirectional(
+                                                                      -1.0,
+                                                                      0.0),
+                                                              child: Column(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                children: [
+                                                                  Align(
+                                                                    alignment:
+                                                                        AlignmentDirectional(
+                                                                            -1.0,
+                                                                            0.0),
+                                                                    child:
+                                                                        Padding(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          5.0),
+                                                                      child:
+                                                                          Text(
+                                                                        'Winner',
+                                                                        textAlign:
+                                                                            TextAlign.start,
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .titleMedium
+                                                                            .override(
+                                                                              font: GoogleFonts.outfit(
+                                                                                fontWeight: FlutterFlowTheme.of(context).titleMedium.fontWeight,
+                                                                                fontStyle: FlutterFlowTheme.of(context).titleMedium.fontStyle,
+                                                                              ),
+                                                                              letterSpacing: 0.0,
+                                                                              fontWeight: FlutterFlowTheme.of(context).titleMedium.fontWeight,
+                                                                              fontStyle: FlutterFlowTheme.of(context).titleMedium.fontStyle,
+                                                                            ),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                  Align(
+                                                                    alignment:
+                                                                        AlignmentDirectional(
+                                                                            -1.0,
+                                                                            0.0),
+                                                                    child: Text(
+                                                                      completedPollRecord
+                                                                          .chosenOption,
+                                                                      textAlign:
+                                                                          TextAlign
+                                                                              .start,
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyLarge
+                                                                          .override(
+                                                                            font:
+                                                                                GoogleFonts.outfit(
+                                                                              fontWeight: FlutterFlowTheme.of(context).bodyLarge.fontWeight,
+                                                                              fontStyle: FlutterFlowTheme.of(context).bodyLarge.fontStyle,
+                                                                            ),
+                                                                            letterSpacing:
+                                                                                0.0,
+                                                                            fontWeight:
+                                                                                FlutterFlowTheme.of(context).bodyLarge.fontWeight,
+                                                                            fontStyle:
+                                                                                FlutterFlowTheme.of(context).bodyLarge.fontStyle,
+                                                                          ),
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                          ),
                                                           Expanded(
                                                             child: Align(
                                                               alignment:

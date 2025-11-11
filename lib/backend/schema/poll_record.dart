@@ -96,6 +96,11 @@ class PollRecord extends FirestoreRecord {
   List<DocumentReference> get optionList5 => _optionList5 ?? const [];
   bool hasOptionList5() => _optionList5 != null;
 
+  // "chosenOption" field.
+  String? _chosenOption;
+  String get chosenOption => _chosenOption ?? '';
+  bool hasChosenOption() => _chosenOption != null;
+
   DocumentReference get parentReference => reference.parent.parent!;
 
   void _initializeFields() {
@@ -115,6 +120,7 @@ class PollRecord extends FirestoreRecord {
     _optionList3 = getDataList(snapshotData['optionList3']);
     _optionList4 = getDataList(snapshotData['optionList4']);
     _optionList5 = getDataList(snapshotData['optionList5']);
+    _chosenOption = snapshotData['chosenOption'] as String?;
   }
 
   static Query<Map<String, dynamic>> collection([DocumentReference? parent]) =>
@@ -166,6 +172,7 @@ Map<String, dynamic> createPollRecordData({
   String? option3,
   String? option4,
   String? option5,
+  String? chosenOption,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -179,6 +186,7 @@ Map<String, dynamic> createPollRecordData({
       'option3': option3,
       'option4': option4,
       'option5': option5,
+      'chosenOption': chosenOption,
     }.withoutNulls,
   );
 
@@ -206,7 +214,8 @@ class PollRecordDocumentEquality implements Equality<PollRecord> {
         e1?.option5 == e2?.option5 &&
         listEquality.equals(e1?.optionList3, e2?.optionList3) &&
         listEquality.equals(e1?.optionList4, e2?.optionList4) &&
-        listEquality.equals(e1?.optionList5, e2?.optionList5);
+        listEquality.equals(e1?.optionList5, e2?.optionList5) &&
+        e1?.chosenOption == e2?.chosenOption;
   }
 
   @override
@@ -226,7 +235,8 @@ class PollRecordDocumentEquality implements Equality<PollRecord> {
         e?.option5,
         e?.optionList3,
         e?.optionList4,
-        e?.optionList5
+        e?.optionList5,
+        e?.chosenOption
       ]);
 
   @override
